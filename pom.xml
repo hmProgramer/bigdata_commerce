@@ -11,6 +11,7 @@
     <modules>
         <module>commons</module>
         <module>mock</module>
+        <module>session</module>
     </modules>
 
     <!-- 声明子项目公用的配置属性 -->
