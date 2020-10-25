@@ -13,6 +13,20 @@
     
 需求1 用户访问session统计
 
-    1 以开始时间与结束时间为条件获取原始的动作表数据
-                              ----》2 对动作表数据按照session做聚合操作
-                                   ----》3 根据每一组聚合数据提取成一条聚合信息
+    1 以开始时间与结束时间为条件获取原始的动作表（user_visit_action）数据 actionRDD
+                              ----》2 将actionRDD转化为k-v结构 sessionId2ActionRDD
+                                 
+                                   ----》3 对sessionId2ActionRDD  groupBykey 操作  sessionId2GroupRDD (斧子型数据)
+                                 
+                                     -----》4  从sessionId2GroupRDD里的每一天数据提取聚合信息
+                                 
+                                       ----》5 联立user_info表
+                                 
+                                         --------》6 得到最后的每个sessionId对应的完整聚合信息sessionId2FullInfoRDD
+                                    
+                                              ----->7 根据过滤条件对聚合信息进行过滤
+                                              
+                                                ----》8 根据符合过滤条件的session更新累加器信息
+                                                
+                                                    ---》9从累加器中读取各个访问步长的session的个数，计算比率     
+                                    
