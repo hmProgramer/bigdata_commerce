@@ -3,8 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/commerce.iml" filepath="$PROJECT_DIR$/commerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commerce.iml" filepath="$PROJECT_DIR$/commerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commerce_basic_1017.iml" filepath="$PROJECT_DIR$/commerce_basic_1017.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/mock/mock.iml" filepath="$PROJECT_DIR$/mock/mock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pageStat.iml" filepath="$PROJECT_DIR$/pageStat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pageState/pageState.iml" filepath="$PROJECT_DIR$/pageState/pageState.iml" />
+      <module fileurl="file://$PROJECT_DIR$/session/session.iml" filepath="$PROJECT_DIR$/session/session.iml" />
     </modules>
   </component>
 </project>

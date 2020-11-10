@@ -8,12 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="commons" />
         <module name="mock" />
+        <module name="pageState" />
+        <module name="session" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="commerce" target="1.8" />
+      <module name="commerce_basic_1017" target="1.8" />
       <module name="commons" target="1.8" />
       <module name="mock" target="1.8" />
+      <module name="pageState" target="1.8" />
+      <module name="session" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
