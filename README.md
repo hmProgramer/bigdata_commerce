@@ -78,4 +78,22 @@
     13 根据所有的切片个数信息，计算实际的页面切片转化率大小
     14 封装到case class，写入到mysql数据库
     
+    
+需求6
+    
+    1 从user_visit_action 表里，获取city_id和pid信息 RDD(cityId，pid)
+    
+    2 从array里获取area，city_id,city_name数据
+    
+    3 聚合 (area,city_id,city_name,pid)
+    
+    4 创建基本信息表(tmp_area_basic_info)
+    
+    5 统计每个区域每个广告的点击次数 (tmp_area_click_count)
+    
+    6 获得拥有完整商品信息的点击次数表 (tmp_area_count_product_info)
+
+    7 统计area  top3的热门品类
+    
+    8 写入mysql    
                                     

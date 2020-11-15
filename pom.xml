@@ -13,6 +13,7 @@
         <module>mock</module>
         <module>session</module>
         <module>pageState</module>
+        <module>areaStat</module>
     </modules>
 
     <!-- 声明子项目公用的配置属性 -->

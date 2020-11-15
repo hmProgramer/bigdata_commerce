@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/commerce.iml" filepath="$PROJECT_DIR$/commerce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/areaStat/areaStat.iml" filepath="$PROJECT_DIR$/areaStat/areaStat.iml" />
       <module fileurl="file://$PROJECT_DIR$/commerce.iml" filepath="$PROJECT_DIR$/commerce.iml" />
       <module fileurl="file://$PROJECT_DIR$/commerce_basic_1017.iml" filepath="$PROJECT_DIR$/commerce_basic_1017.iml" />
       <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
