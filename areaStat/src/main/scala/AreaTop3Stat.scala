@@ -6,7 +6,7 @@ import commons.utils.ParamUtils
 import net.sf.json.JSONObject
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SaveMode, SparkSession}
 
 object AreaTop3Stat {
 
@@ -53,7 +53,7 @@ object AreaTop3Stat {
     getAreaProductClickCountInfo(sparkSession)
 
     getAreaTop3ProductRDD(sparkSession,taskUUID)
-    sparkSession.sql("select * from tmp_test").show()
+
 
   }
 
@@ -69,14 +69,15 @@ object AreaTop3Stat {
     // case when then ... when then ... else ... end
 
 //    val sql = "SELECT area, CASE WHEN area='华北' OR area='华东' THEN 'A_Level' "+
-//    " WHEN area='华中' OR area='华南' THEN 'B_level' " +
-//    " WHEN area=西南' OR area='西北' THEN 'C_level'" +
-//    " ELSE 'D_level'" +
-//    " END area_level, "+
-//    "city_infos,pid,product_name,product_status,click_count from ("+
-//    "select area,city_infos,pid,product_name,product_status,click_count," +
-//    "row_number() over (PARTITION BY area ORDER BY click_count DESC) rank from "+
-//    " tmp_area_count_product_info) t where rank<=3"
+//    "WHEN area='华中' OR area='华南' THEN 'B_level' " +
+//    "WHEN area=西南' OR area='西北' THEN 'C_level' " +
+//    "ELSE 'D_level' " +
+//    "END area_level, "+
+//    "city_infos,pid,product_name,product_status,click_count from ( "+
+//    "select area,city_infos,pid,product_name,product_status,click_count, " +
+//    "row_number() over (PARTITION BY area ORDER BY click_count DESC) rank from  "+
+//    "tmp_area_count_product_info ) t where rank<=3"
+
     val sql = "SELECT " +
       "area," +
       "CASE " +
@@ -104,7 +105,22 @@ object AreaTop3Stat {
       "WHERE rank<=3"
 
 
-    sparkSession.sql(sql).createOrReplaceTempView("tmp_test")
+    val top3productRDD: RDD[AreaTop3Product] = sparkSession.sql(sql).rdd.map {
+      case row =>
+        AreaTop3Product(taskUUID, row.getAs[String]("area"), row.getAs[String]("area_level"),
+          row.getAs[Long]("pid"), row.getAs[String]("city_infos"), row.getAs[Long]("click_count"),
+          row.getAs[String]("product_name"), row.getAs[String]("product_status"))
+    }
+    import sparkSession.implicits._
+
+    top3productRDD.toDF().write
+      .format("jdbc")
+      .option("url", ConfigurationManager.config.getString(Constants.JDBC_URL))
+      .option("dbtable", "area_top3_product")
+      .option("user", ConfigurationManager.config.getString(Constants.JDBC_USER))
+      .option("password", ConfigurationManager.config.getString(Constants.JDBC_PASSWORD))
+      .mode(SaveMode.Append)
+      .save()
 
   }
 
