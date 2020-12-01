@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="adversStat" />
         <module name="areaStat" />
         <module name="commons" />
         <module name="mock" />
@@ -14,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="adversStat" target="1.8" />
       <module name="areaStat" target="1.8" />
       <module name="commerce" target="1.8" />
       <module name="commerce_basic_1017" target="1.8" />

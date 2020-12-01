@@ -69,7 +69,7 @@ object MockRealTimeData {
       for (item <- generateMockData()) {
         kafkaProducer.send(new ProducerRecord[String, String](topic, item))
       }
-      Thread.sleep(5000)
+      Thread.sleep(500)
     }
   }
 }
