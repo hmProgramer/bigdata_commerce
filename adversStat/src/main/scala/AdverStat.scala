@@ -130,6 +130,7 @@ object AdverStat {
   }
 
 
+
   def proveinceTop3Adver(sparkSession: SparkSession, key2ProvinceCityStream:  DStream[(String, Long)]) = {
     key2ProvinceCityStream.map{
       case (key,count) =>
