@@ -106,8 +106,20 @@
 
 
 需求9 每天每个省份top3热门广告
-
-
-需求10 最近一个小时广告点击量统计
+   
+    1 将各省各城市广告点击量实时统计的DStream 转换成 key-value格式  --》  (newKey,count)
+    2 执行reduceBykey的操作
+    3 再将将key2ProvinceCityDStream转成touple   
+    4 在将touple类型的数据转成一张临时表
+    5 最后执行 sparkSession.sql(sql).rdd    ---》top3DSteam  【RDD[row]】
+    6 最后再遍历上面的每一个rdd【row】类型 执行入库操作
+ 
+需求10 最近一个小时广告点击量统计 
+（通过SprakStreaming 的窗口操作 reduceBykeyAndWindow 实现统计一个小时内每个广告每分钟的点击量）
+    
+    1 将原始的adRealTimeFilterDStream  转换成key -value格式
+    2 执行reduceByKeyAndwindow 操作
+    3 写入mysql数据库
+    
     
                                     
