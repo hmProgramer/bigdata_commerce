@@ -10,7 +10,7 @@
 离线模拟数据生成
  即通过定义动作表，用户信息表，即产品表的相关类及属性，在通过随机数等方式生成模拟数据，并初始化到hive中
     
-### 需求1 用户访问session统计
+### 需求一 用户访问session统计
 1. 以开始时间与结束时间为条件获取原始的动作表（user_visit_action）数据 actionRDD
 2. 将actionRDD转化为k-v结构 sessionId2ActionRDD                          
 3. 对sessionId2ActionRDD  groupBykey 操作  sessionId2GroupRDD (斧子型数据)                         
@@ -75,7 +75,7 @@
 14. 封装到case class，写入到mysql数据库
     
     
-### 需求六
+### 需求六 各区域top3商品统计
     
 1. 从user_visit_action 表里，获取city_id和pid信息 RDD(cityId，pid)
 
